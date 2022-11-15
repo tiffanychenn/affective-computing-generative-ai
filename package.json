@@ -7,6 +7,10 @@
   "author": "Jessie Mindel <jessie.mindel@gmail.com>",
   "license": "MIT",
   "dependencies": {
+    "@fortawesome/fontawesome-svg-core": "^6.2.0",
+    "@fortawesome/free-regular-svg-icons": "^6.2.0",
+    "@fortawesome/free-solid-svg-icons": "^6.2.0",
+    "@fortawesome/react-fontawesome": "^0.2.0",
     "@types/react": "^18.0.24",
     "@types/react-dom": "^18.0.8",
     "@types/react-redux": "^7.1.24",

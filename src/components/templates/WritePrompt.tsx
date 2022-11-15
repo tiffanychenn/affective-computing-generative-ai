@@ -11,6 +11,7 @@ import { PlayerTokenHeader } from '../molecules/PlayerTokenHeader';
 import { SlideBackground } from '../molecules/SlideBackground';
 import { ContentWithImageSlide } from '../organisms/ContentWithImageSlide';
 import { SectionImageUrls } from '../../reducers/promptReducer';
+import { Tag } from '../atoms/input/Tag';
 
 interface Props {
 	logger: Logger;
@@ -34,6 +35,7 @@ export class WritePrompt extends React.Component<Props> {
 			<Text>{renderBoldText(replacePlayerText(step.instructions, playerNumber))}</Text>
 			<Hint>Always feel free to discuss your ideas with your partners.</Hint> {/* TODO: Add ! icon before hint. */}
 			<LongTextBox logger={logger} id={step.id + '-blank'} placeholder={step.exampleText}/>
+			<Tag logger={logger} id={step.id + '-blank'} text='yes'></Tag>
 			{/* TODO: Convert LongTextBox into something that monitors word and character limits, and responds accordingly. Use state to inform state of next button. */}
 			{/* TODO: It's possible that in some cases, we'll want smaller text boxes or individual text boxes per word. We need to account for that, if that's the case. */}
 		</ContentWithImageSlide>;

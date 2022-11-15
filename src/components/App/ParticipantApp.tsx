@@ -60,8 +60,8 @@ export default class ParticipantApp extends React.Component<{}> {
 					 sectionImageUrls={[]}
 					 allowNext={true}
 					 onNext={() => {}}/> */}
-			<ExperimentGenerator />
-			{/* <ConnectedStorySlide logger={this.logger}/> */}
+			{/* <ExperimentGenerator /> */}
+			<ConnectedStorySlide logger={this.logger}/>
 		</div>;
 	}
 }
