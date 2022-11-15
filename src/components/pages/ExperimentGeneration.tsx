@@ -51,4 +51,4 @@ class ExperimentGenerator extends React.Component<{}, ExperimentGeneratorState> 
     }
 }
 
-export default ExperimentGenerator;
+export default connect(null, {initExperiment})(ExperimentGenerator);
