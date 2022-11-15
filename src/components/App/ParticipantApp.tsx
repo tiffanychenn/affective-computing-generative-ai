@@ -15,6 +15,7 @@ import { WritePrompt } from "../templates/WritePrompt";
 // import { TEST_STORY_DATA } from "./storyData";
 import { Reflect } from "../templates/Reflect";
 import ConnectedStorySlide from "../pages/ConnectedStorySlide";
+import ExperimentGenerator from "../pages/ExperimentGeneration";
 
 export default class ParticipantApp extends React.Component<{}> {
 	private logger: Logger;
@@ -59,8 +60,8 @@ export default class ParticipantApp extends React.Component<{}> {
 					 sectionImageUrls={[]}
 					 allowNext={true}
 					 onNext={() => {}}/> */}
-
-			<ConnectedStorySlide logger={this.logger}/>
+			<ExperimentGenerator />
+			{/* <ConnectedStorySlide logger={this.logger}/> */}
 		</div>;
 	}
 }
