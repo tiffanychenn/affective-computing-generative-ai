@@ -2,13 +2,12 @@ import * as React from 'react';
 import { Logger } from '../../data/logger';
 import { ImageStep } from '../../data/story';
 import { SectionImageUrls } from '../../reducers/promptReducer';
-import { getSectionImageOrString, imagePathToUrl } from '../../utils/utils';
+import { getSectionImageOrString } from '../../utils/utils';
 import { STAR_BG } from '../App/storyData';
 import { Panel } from '../atoms/containers/Panel';
 import { BLUE_BG_LIGHT_SHADOW, ImageCard, IMG_BG_DARK_SHADOW } from '../atoms/image/ImageCard';
 import { Button } from '../atoms/input/Button';
-import { PageHeader, Text, Error as TextError, Hint } from '../atoms/text/Text';
-import { BlankSlide } from '../organisms/BlankSlide';
+import { PageHeader, Error as TextError, Hint } from '../atoms/text/Text';
 import { BlankTwoColumnSlide } from '../organisms/BlankTwoColumnSlide';
 
 interface Props {

@@ -34,6 +34,7 @@ export function generateImage(sectionIndex: number, prompt: string, logger: Logg
 		const body = {
 			sectionIndex,
 			prompt,
+			hasUsedRedo: state.game.hasUsedRedo,
 
 			id: state.prompt.experimentId,
 			firstPlayerId: state.prompt.firstPlayerId,

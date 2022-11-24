@@ -40,7 +40,7 @@ app.post('/image-gen', async (req,res) => {
         const experimentId = req.body.id;
         const sectionIndex = req.body.sectionIndex;
         const buffer = Buffer.from(image, "base64");
-        const filename = experimentId + "-" + sectionIndex + ".png";
+        const filename = experimentId + "-" + sectionIndex + "-" + req.body.hasUsedRedo + ".png";
         const filepath = "../../data/" + experimentId + "/";
         fs.writeFile(filepath + filename, buffer, (err) => {
             // In case of a error throw err.
