@@ -4,12 +4,13 @@ import { LoggedFormElementComponent, LoggedFormElementProps } from './LoggedForm
 
 export interface Props extends LoggedFormElementProps {
 	placeholder?: string;
+	defaultValue?: string;
 	onInput?: (e: React.FormEvent<HTMLInputElement>) => void;
 }
 
 export default class ShortTextBox extends LoggedFormElementComponent<Props> {
 	render() {
-		const { placeholder, onInput } = this.props;
+		const { placeholder, defaultValue, onInput } = this.props;
 
 		const style = css({
 			background: '#0A1547',
@@ -35,7 +36,7 @@ export default class ShortTextBox extends LoggedFormElementComponent<Props> {
 			transition: 'all 0.2s',
 		});
 
-		return <input css={style} type="text" placeholder={placeholder} onInput={e => {
+		return <input css={style} type="text" placeholder={placeholder} defaultValue={defaultValue} onInput={e => {
 			this.onInput(e);
 			if (onInput) onInput(e);
 		}}></input>;

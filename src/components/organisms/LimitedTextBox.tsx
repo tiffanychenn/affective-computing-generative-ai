@@ -14,6 +14,7 @@ interface Props {
 	id: string;
 	logger: Logger;
 	placeholder?: string;
+	defaultValue?: string;
 
 	onLimitEdge?: (overLimit: boolean) => void;
 	onInput?: (value: string) => void;
@@ -60,7 +61,7 @@ export class LimitedTextBox extends React.Component<Props, State> {
 	}
 
 	render() {
-		const { length, charLimit, wordLimit, id, logger, placeholder, hintText } = this.props;
+		const { length, charLimit, wordLimit, id, logger, placeholder, defaultValue, hintText } = this.props;
 		const { chars, words } = this.state;
 
 		const approachingPercent = 0.75;
@@ -82,12 +83,12 @@ export class LimitedTextBox extends React.Component<Props, State> {
 
 		if (length == 'short') {
 			return <div style={containerStyle}>
-				<ShortTextBox id={id} logger={logger} placeholder={placeholder} onInput={e => this.onInput(e)}/>
+				<ShortTextBox id={id} logger={logger} placeholder={placeholder} defaultValue={defaultValue} onInput={e => this.onInput(e)}/>
 				{hint}
 			</div>;
 		} else {
 			return <div style={containerStyle}>
-				<LongTextBox id={id} logger={logger} placeholder={placeholder} onInput={e => this.onInput(e)}/>
+				<LongTextBox id={id} logger={logger} placeholder={placeholder} defaultValue={defaultValue} onInput={e => this.onInput(e)}/>
 				{hint}
 			</div>;
 		}

@@ -63,6 +63,7 @@ class ConnectedStorySlide extends React.Component<Props> {
 					step={step as WritePromptStep}
 					landscapePlayer={landscapePlayer}
 					sectionImageUrls={sectionImageUrls}
+					sectionIndex={sectionIndex}
 					onNext={() => advanceStep(logger)}
 					onBack={() => redoStep()}
 					error={modifiedError}/>;

@@ -3,7 +3,7 @@ import { Logger } from '../../data/logger';
 import { WritePromptStep } from '../../data/story';
 import { playerRoleToNumber, renderBoldText, replacePlayerText } from '../../utils/textUtils';
 import { BLUE_BG_LIGHT_SHADOW, ImageCard, IMG_BG_DARK_SHADOW } from '../atoms/image/ImageCard';
-import { DiscussionPrompt, Hint, PageHeader, Text, Error, TIMEOUT_WARNING_TEXT, Warning } from '../atoms/text/Text';
+import { Hint, PageHeader, Text, Error } from '../atoms/text/Text';
 import { PlayerTokenHeader } from '../molecules/PlayerTokenHeader';
 import { SectionImageUrls } from '../../reducers/promptReducer';
 import { getSectionImageOrString } from '../../utils/utils';
@@ -18,6 +18,7 @@ interface Props {
 	step: WritePromptStep;
 	landscapePlayer: 1 | 2;
 	sectionImageUrls: SectionImageUrls;
+	sectionIndex: number;
 	onNext?: () => void;
 	onBack?: () => void;
 	error: string;
@@ -52,11 +53,14 @@ export class WritePrompt extends React.Component<Props, State> {
 	}
 
 	render() {
-		const { logger, step, landscapePlayer, sectionImageUrls, onNext, onBack, error } = this.props;
+		const { logger, step, landscapePlayer, sectionImageUrls, sectionIndex, onNext, onBack, error } = this.props;
 		const { isOverLimit, hasText, hasTimedOut } = this.state;
 		const playerNumber = playerRoleToNumber(step.player, landscapePlayer);
 
 		const cardImage = getSectionImageOrString(step.cardImage, sectionImageUrls);
+		const formId = step.id + '-blank';
+		const latestValues = logger.getLatestValues([formId]);
+		const prevPrompt = latestValues[formId] || undefined;
 		// const boxShadow = typeof step.backgroundImage == 'number' ? IMG_BG_DARK_SHADOW : BLUE_BG_LIGHT_SHADOW;
 		// const bgOpacity = typeof step.backgroundImage == 'number' ? 0.8 : 0.4;
 		const bgOpacity = step.backgroundImage == STAR_BG ? 0.4 : 0.8;
@@ -99,11 +103,12 @@ export class WritePrompt extends React.Component<Props, State> {
 					<Text>{renderBoldText(replacePlayerText(step.instructions, playerNumber))}</Text>
 					{step.hint && <Hint>{renderBoldText(replacePlayerText(step.hint, playerNumber))}</Hint>}
 					<LimitedTextBox logger={logger}
-									id={step.id + '-blank'}
+									id={formId}
 									length="long"
 									charLimit={step.charLimit}
 									wordLimit={step.wordLimit}
 									placeholder={step.exampleText}
+									defaultValue={prevPrompt}
 									onLimitEdge={x => this.onLimitEdge(x)}
 									onInput={x => this.onInput(x)}/>
 				</div>
